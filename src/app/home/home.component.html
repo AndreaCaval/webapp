@@ -1,0 +1,28 @@
+<div class="d-flex flex-row-reverse">
+    <button routerLink="/new" class="btn btn-primary">New</button>
+    <input type="text" placeholder="Search" class="mx-2" #filter>
+</div>
+<br><br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>City</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="dataUsers.length>0">
+        <tr *ngFor="let userInfo of dataUsers; let index = index">
+            <th>{{userInfo.firstName}}</th>
+            <th>{{userInfo.lastName}}</th>
+            <th>{{userInfo.city}}</th>
+            <th>{{userInfo.email}}</th>
+            <th>
+                <button [routerLink]="['/edit', index]" type="button" class="btn btn-sm btn-secondary">Edit</button>
+                <button (click)="onDelete(index)" type="button" class="btn btn-sm btn-danger ms-2">Delete</button>
+            </th>
+        </tr>
+    </tbody>
+</table>
