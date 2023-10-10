@@ -1,18 +1,23 @@
-<div class="container row row-cols-3" [formGroup]="userData">
-    <div class="form-group p-2">
-        <input type="text" class="form-control" placeholder="FirstName*" formControlName="firstName">
+<div class="container input-form" [formGroup]="userData">
+    <div class="form-floating m-2">
+        <input id="id" type="text" class="form-control" placeholder="FirstName*" formControlName="firstName">
+        <label>FirstName*</label>
         <div *ngIf="fc.firstName.hasError('required')">
-            <div class="alert alert-danger" *ngIf="fc.firstName.touched && fc.firstName.invalid">firstName is required...</div>
+            <div class="alert alert-danger" *ngIf="fc.firstName.touched && fc.firstName.invalid">firstName is
+                required...</div>
         </div>
     </div>
-    <div class="form-group p-2">
+    <div class="form-floating m-2">
         <input type="text" class="form-control" placeholder="LastName*" formControlName="lastName">
+        <label>LastName*</label>
         <div *ngIf="fc.lastName.hasError('required')">
-            <div class="alert alert-danger" *ngIf="fc.lastName.touched && fc.lastName.invalid">lastName is required...</div>
+            <div class="alert alert-danger" *ngIf="fc.lastName.touched && fc.lastName.invalid">lastName is required...
+            </div>
         </div>
     </div>
-    <div class="form-group p-2">
+    <div class="form-floating m-2">
         <input type="text" class="form-control" placeholder="Email*" formControlName="email">
+        <label>Email*</label>
         <div *ngIf="fc.email.hasError('required')">
             <div class="alert alert-danger" *ngIf="fc.email.touched && fc.email.invalid">email is required...</div>
         </div>
@@ -20,22 +25,28 @@
             <div class="alert alert-danger" *ngIf="fc.email.touched && fc.email.invalid">email not valid...</div>
         </div>
     </div>
-    <div class="form-group p-2">
+    <div class="form-floating m-2">
         <input type="text" class="form-control" placeholder="City*" formControlName="city">
+        <label>City*</label>
         <div *ngIf="fc.city.hasError('required')">
             <div class="alert alert-danger" *ngIf="fc.city.touched && fc.city.invalid">city is required...</div>
         </div>
     </div>
-    <div class="form-group p-2">
+    <div class="form-floating m-2">
         <input type="text" class="form-control" placeholder="Province" formControlName="province">
+        <label>Province</label>
     </div>
-    <div class="form-group p-2">
+    <div class="form-floating m-2">
         <input type="text" class="form-control" placeholder="Location" formControlName="location">
+        <label>Location</label>
     </div>
-    <div class="form-group p-2">
+    <div class="form-floating m-2">
         <input type="text" class="form-control" placeholder="Address" formControlName="address">
+        <label>Address</label>
     </div>
-    <div class="form-group p-2">
-        <textarea class="form-control" placeholder="Notes" name="" id="" cols="30" rows="1" formControlName="notes"></textarea>
+    <div class="form-floating m-2">
+        <textarea class="form-control" placeholder="Notes" name="" id="" cols="20" rows="1"
+            formControlName="notes"></textarea>
+        <label>Notes</label>
     </div>
 </div>

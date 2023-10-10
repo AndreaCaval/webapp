@@ -11,9 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
 import { NewAnagraficComponent } from './new-anagrafic/new-anagrafic.component';
 import { EditAnagraficComponent } from './edit-anagrafic/edit-anagrafic.component';
-import { TableAnagraficComponent } from './table-anagrafic/table-anagrafic.component';
-import { SingleAnagraficComponent } from './single-anagrafic/single-anagrafic.component';
 import { InputAnagraficComponent } from './input-anagrafic/input-anagrafic.component';
+import { InfoAnagraficComponent } from './info-anagrafic/info-anagrafic.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +20,8 @@ import { InputAnagraficComponent } from './input-anagrafic/input-anagrafic.compo
     HomeComponent,
     NewAnagraficComponent,
     EditAnagraficComponent,
-    TableAnagraficComponent,
-    SingleAnagraficComponent,
     InputAnagraficComponent,
+    InfoAnagraficComponent,
   ],
   imports: [
     BrowserModule,

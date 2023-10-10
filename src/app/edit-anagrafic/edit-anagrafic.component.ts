@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HomeService } from '../home.service';
 import Swal from 'sweetalert2';
+import { EditAnagraficService } from '../edit-anagrafic.service';
 
 @Component({
   selector: 'app-edit-anagrafic',
@@ -12,12 +13,11 @@ import Swal from 'sweetalert2';
 })
 export class EditAnagraficComponent implements OnInit {
   editAnagraficForm!: FormGroup;
-  user!: User[];
-  constructor(public rs: HomeService, fb: FormBuilder, private router: Router) {
+  constructor(private editAnagraficService: EditAnagraficService, public rs: HomeService, fb: FormBuilder, private router: Router) {
     this.editAnagraficForm = fb.group({});
   }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void { }
 
   submitForm() {
     Swal.fire({
@@ -27,10 +27,11 @@ export class EditAnagraficComponent implements OnInit {
       showConfirmButton: false,
       timer: 1500
     })
-    let editUser: User[] = this.editAnagraficForm.value.userInfo    
-    let id = this.editAnagraficForm.value.userInfo.id    
+    let editUser: User[] = this.editAnagraficForm.value.userInfo
+    let id = this.editAnagraficForm.value.userInfo.id
     this.rs.updateUser(id, editUser).subscribe()
-    this.router.navigate(['/'])
+    this.editAnagraficService.editUser[0] = this.editAnagraficForm.value.userInfo
+    this.router.navigate(['/info/' + id])
   }
 
   onChange(form: any) {

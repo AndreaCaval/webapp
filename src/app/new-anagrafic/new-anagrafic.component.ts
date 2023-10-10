@@ -26,13 +26,10 @@ export class NewAnagraficComponent {
       showConfirmButton: false,
       timer: 1500
     })
-    let newUser: User[] = this.newAnagraficForm.value.userInfo
-    this.rs.newUsers(newUser).subscribe()
+    let newUser: User[] = this.newAnagraficForm.value.userInfo    
+    this.rs.newUsers(newUser).subscribe()    
     this.router.navigate(['/'])
   }
-
-  handleDenial() { }
-  handleDismiss(event: any) { }
 
   onChange(form: any) {
     this.newAnagraficForm = form;

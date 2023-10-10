@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .input-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .input-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.table{
+    min-width: 700px;
+}
+
+.btn-action{
+    min-width: 180px;
+}

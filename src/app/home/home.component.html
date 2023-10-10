@@ -19,9 +19,11 @@
             <th>{{userInfo.lastName}}</th>
             <th>{{userInfo.city}}</th>
             <th>{{userInfo.email}}</th>
-            <th>
+            <th class="btn-action">
+                <button [routerLink]="['/info', userInfo.id]" (click)="onEdit(userInfo.id)" type="button"
+                    class="btn btn-sm btn-primary">Info</button>
                 <button [routerLink]="['/edit', userInfo.id]" (click)="onEdit(userInfo.id)" type="button"
-                    class="btn btn-sm btn-secondary">Edit</button>
+                    class="btn btn-sm btn-success ms-2">Edit</button>
                 <swal #deleteSwal title="Delete data" text="Unsaved data you will lose all changes, are you sure you want to continue?" icon="warning" [showCancelButton]="true"
                     [focusCancel]="true" (confirm)="onDelete(userInfo.id)">
                 </swal>

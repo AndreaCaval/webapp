@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ControlContainer, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EditAnagraficService } from '../edit-anagrafic.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-input-anagrafic',
@@ -47,8 +47,6 @@ export class InputAnagraficComponent implements OnInit {
         id: ['',],
       });
     }
-    
-
     this.addGroupToParent();
   }
 
