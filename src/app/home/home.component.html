@@ -1,27 +1,31 @@
 <div class="d-flex flex-row-reverse">
     <button routerLink="/new" class="btn btn-primary">New</button>
-    <input type="text" placeholder="Search" class="mx-2" #filter>
+    <input type="text" placeholder="Search" (keyup)="search(filter.value)" class="mx-2" #filter>
 </div>
 <br><br>
 <table class="table">
     <thead>
         <tr>
-            <th>FirstName</th>
-            <th>LastName</th>
-            <th>City</th>
-            <th>Email</th>
+            <th (click)="sort('firstName')" class="pointer">FirstName</th>
+            <th (click)="sort('lastName')" class="pointer">LastName</th>
+            <th (click)="sort('city')" class="pointer">City</th>
+            <th (click)="sort('email')" class="pointer">Email</th>
             <th>Actions</th>
         </tr>
     </thead>
-    <tbody *ngIf="dataUsers.length>0">
-        <tr *ngFor="let userInfo of dataUsers; let index = index">
+    <tbody *ngIf="filterUsers.length>0">
+        <tr *ngFor="let userInfo of filterUsers | orderBy: key; let index = index;">
             <th>{{userInfo.firstName}}</th>
             <th>{{userInfo.lastName}}</th>
             <th>{{userInfo.city}}</th>
             <th>{{userInfo.email}}</th>
             <th>
-                <button [routerLink]="['/edit', index]" type="button" class="btn btn-sm btn-secondary">Edit</button>
-                <button (click)="onDelete(index)" type="button" class="btn btn-sm btn-danger ms-2">Delete</button>
+                <button [routerLink]="['/edit', userInfo.id]" (click)="onEdit(userInfo.id)" type="button"
+                    class="btn btn-sm btn-secondary">Edit</button>
+                <swal #deleteSwal title="Delete data" text="Unsaved data you will lose all changes, are you sure you want to continue?" icon="warning" [showCancelButton]="true"
+                    [focusCancel]="true" (confirm)="onDelete(userInfo.id)">
+                </swal>
+                <button [swal]="deleteSwal" type="button" class="btn btn-sm btn-danger ms-2">Delete</button>
             </th>
         </tr>
     </tbody>

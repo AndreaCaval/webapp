@@ -3,20 +3,20 @@
 Le webapp da realizzare, tutta in Angular-cli, deve emulare la parte server tramite la
 tecnologia del framework.
 
-Parte server:
+###Parte server:
 - La parte server va emulata con dei json consultabili tramite observable e chiamate
 asincrone (oppure con angular json-server json-server - npm)
 
 
-Parte client
+###Parte client
 per lo sviluppo dell’applicazione lato client utilizziamo: 
 - Angular (16)
 - Bootstrap (5)
 - SweetAlert per mostrare gli errori o i messaggi di conferma
 
   
-Progetto per test
-Gestione dati personali
+##Progetto per test
+###Gestione dati personali
 
 Applicativo gestione/invio dati personali: si tratta di una piccola webapp che consente di
 gestire i dati anagrafici di persone:

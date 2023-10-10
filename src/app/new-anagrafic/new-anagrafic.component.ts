@@ -1,8 +1,9 @@
-import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Component } from '@angular/core';
-import { InputAnagraficComponent } from '../input-anagrafic/input-anagrafic.component';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
+import { HomeService } from '../home.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-anagrafic',
@@ -11,27 +12,33 @@ import { Router } from '@angular/router';
 })
 export class NewAnagraficComponent {
 
-  newAnagraficForm:any
+  newAnagraficForm: any
 
-  constructor(fb: FormBuilder, private router: Router) {
+  constructor(fb: FormBuilder, private router: Router, public rs: HomeService) {
     this.newAnagraficForm = fb.group({});
   }
 
-  // get fc(){
-  //   return this.newAnagraficForm.controls
-  // }
-
   submitForm() {
-    console.log(this.newAnagraficForm.value.userInfo);
-    let newUser:User = this.newAnagraficForm.value.userInfo
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'New anagrafic has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    let newUser: User[] = this.newAnagraficForm.value.userInfo
+    this.rs.newUsers(newUser).subscribe()
+    this.router.navigate(['/'])
   }
 
-  onChange(form:any) {
-    // reset the form value to the newly emitted form group value.
+  handleDenial() { }
+  handleDismiss(event: any) { }
+
+  onChange(form: any) {
     this.newAnagraficForm = form;
   }
 
-  onSubmit(){
+  onSubmit() {
     this.router.navigate(['/'])
   }
 }

@@ -1,40 +1,43 @@
+import { User } from './../models/user';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { HomeService } from '../home.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-anagrafic',
   templateUrl: './edit-anagrafic.component.html',
   styleUrls: ['./edit-anagrafic.component.css']
 })
-export class EditAnagraficComponent implements OnInit{
+export class EditAnagraficComponent implements OnInit {
   editAnagraficForm!: FormGroup;
-
-  constructor(fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
+  user!: User[];
+  constructor(public rs: HomeService, fb: FormBuilder, private router: Router) {
     this.editAnagraficForm = fb.group({});
   }
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(value => {
-      let id = value.get('id')
-      console.log(id);
-    })
-  }
-  // get fc(){
-  //   return this.editAnagraficForm.controls
-  // }
+  ngOnInit(): void {  }
 
   submitForm() {
-    console.log(this.editAnagraficForm.value.userInfo);
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Anagrafic has been edited successfully',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    let editUser: User[] = this.editAnagraficForm.value.userInfo    
+    let id = this.editAnagraficForm.value.userInfo.id    
+    this.rs.updateUser(id, editUser).subscribe()
+    this.router.navigate(['/'])
   }
 
-  onChange(form:any) {
-    // reset the form value to the newly emitted form group value.
+  onChange(form: any) {
     this.editAnagraficForm = form;
   }
 
-  onSubmit(){
+  onSubmit() {
     this.router.navigate(['/'])
   }
 }

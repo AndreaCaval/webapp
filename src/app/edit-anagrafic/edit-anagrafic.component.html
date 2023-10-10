@@ -5,7 +5,9 @@
         <app-input-anagrafic [formData]="editAnagraficForm" (onFormGroupChange)="onChange($event)"></app-input-anagrafic>
         <br>
         <button type="submit" class="btn btn-success" [disabled]="editAnagraficForm.invalid">Edit</button>
-        <button type="button" (click)="onSubmit()" class="btn btn-danger ms-2">Cancel</button>
+        <swal #deleteSwal title="Data not saved" text="Do you want to continue?" icon="warning" [showCancelButton]="true"
+        [focusCancel]="true" (confirm)="onSubmit()"> </swal>
+        <button [swal]="deleteSwal" type="button" class="btn btn-danger ms-2">Cancel</button>
     </form>
 
     <br><br>
