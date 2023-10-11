@@ -1,10 +1,17 @@
 # Webapp
 
+# Setup
+```bash
+npm i
+json-server --watch db.json
+npm start
+```
+
 ## Home page
-- table with users information
-- ordering by column ascending & descending
-- search by every camp
-- info/edit/delete button
+- [x] table with users information
+- [x] ordering by column ascending & descending
+- [x] search by every camp
+- [x] info/edit/delete button
   
 ![screencapture-localhost-4200-2023-10-11-15_00_57](https://github.com/AndreaCaval/webapp/assets/74151159/a29465eb-8e43-460c-80ea-93353cc2201e)
 
