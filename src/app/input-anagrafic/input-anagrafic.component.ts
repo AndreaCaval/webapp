@@ -22,41 +22,48 @@ export class InputAnagraficComponent implements OnInit {
     })
     let editUser = this.editAnagraficService.editUser
     if (editUser != undefined && id != null) {
-      this.userData = this.fb.group({
-        firstName: [editUser[0].firstName, [Validators.required]],
-        lastName: [editUser[0].lastName, [Validators.required]],
-        email: [editUser[0].email, [Validators.required, Validators.email]],
-        city: [editUser[0].city, [Validators.required]],
-        province: [editUser[0].province,],
-        location: [editUser[0].location,],
-        address: [editUser[0].address,],
-        notes: [editUser[0].notes,],
-        id: [editUser[0].id,],
-      });
+      localStorage.setItem('editUser', JSON.stringify(editUser))
+      this.preSetUserData(editUser)
+    }
+    else if (id != null) {
+      let d = JSON.parse(localStorage.getItem('editUser')!)       
+      this.preSetUserData(d)
     }
     else {
-      this.userData = this.fb.group({
-        firstName: ['', [Validators.required]],
-        lastName: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.email]],
-        city: ['', [Validators.required]],
-        province: ['',],
-        location: ['',],
-        address: ['',],
-        notes: ['',],
-        id: ['',],
-      });
+      this.setUserData('', '', '', '', '', '', '', '', '')
     }
     this.addGroupToParent();
+  }
+
+  private preSetUserData(editUser: any){
+    this.setUserData(editUser[0].firstName,
+      editUser[0].lastName,
+      editUser[0].email,
+      editUser[0].city,
+      editUser[0].province!,
+      editUser[0].location!,
+      editUser[0].address!,
+      editUser[0].notes!,
+      editUser[0].id)
+  }
+
+  private setUserData(fn: string, ln: string, e: string, c: string, p: string, l: string, a: string, n: string, id: string) {
+    this.userData = this.fb.group({
+      firstName: [fn, [Validators.required]],
+      lastName: [ln, [Validators.required]],
+      email: [e, [Validators.required, Validators.email]],
+      city: [c, [Validators.required]],
+      province: [p,],
+      location: [l,],
+      address: [a,],
+      notes: [n,],
+      id: [id,],
+    });
   }
 
   get fc() {
     return this.userData.controls
   }
-
-  // clearText(): void {
-  //   this.userData.get('firstName')?.setValue('');
-  // }
 
   private addGroupToParent(): void {
     this.formData.addControl('userInfo', new FormGroup(this.userData.controls));

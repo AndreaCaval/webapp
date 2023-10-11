@@ -30,7 +30,10 @@ export class EditAnagraficComponent implements OnInit {
     let editUser: User[] = this.editAnagraficForm.value.userInfo
     let id = this.editAnagraficForm.value.userInfo.id
     this.rs.updateUser(id, editUser).subscribe()
-    this.editAnagraficService.editUser[0] = this.editAnagraficForm.value.userInfo
+    if (this.editAnagraficService.editUser != undefined)
+      this.editAnagraficService.editUser[0] = this.editAnagraficForm.value.userInfo
+    else
+      localStorage.setItem('infoUser', this.editAnagraficForm.value.userInfo)
     this.router.navigate(['/info/' + id])
   }
 
