@@ -1,10 +1,14 @@
 # Webapp
 
 # Setup
+### terminal 1
 ```bash
-npm i
 npm i json-server
 json-server --watch db.json
+```
+### terminal 2
+```bash
+npm i
 npm start
 ```
 
