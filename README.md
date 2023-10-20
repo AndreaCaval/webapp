@@ -79,6 +79,6 @@ Dopo l’inserimento o la modifica del dato, deve essere evidenziato il record i
 modificato e la pagina si deve posizionare su tale record.
 - La navigazione delle pagine dev’essere gestita tramite route di Angular.
 - L’applicazione deve essere responsive, utilizzabile da smartphone e tablet
-- 
+  
 N.B: Il passaggio dalle griglie dati alle maschere di editing deve essere fatto tramite
 routing di Angular con componenti dedicati (non con mostra/nascondi)
